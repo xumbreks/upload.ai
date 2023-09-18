@@ -1,10 +1,11 @@
 import { Button } from "./components/ui/button";
-import { Github, FileVideo, Upload, Wand2 } from "lucide-react";
+import { Github, Wand2 } from "lucide-react";
 import { Separator } from "./components/ui/separator";
 import { Textarea } from "./components/ui/textarea";
 import { Label } from "./components/ui/label";
 import { Select, SelectTrigger, SelectItem, SelectValue, SelectContent } from "./components/ui/select";
 import { Slider } from "./components/ui/slider";
+import { VideoInputForm } from "./components/video-input-form";
 
 export function App() {
 
@@ -37,41 +38,19 @@ export function App() {
 
           <p className="text-sm text-muted-foreground">
             Lembre-se: você pode utilizar a variável <code className="text-violet-400">{'{transcription}'} </code>
-             no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado.
+            no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado.
           </p>
         </div>
         <aside className="w-80 space-y-6">
-          <form className="space-y-6">
-            <Label
-              htmlFor="video"
-              className="border flex rounded-md aspect-video cursor-pointer border-dashed text-sm flex-col gap-2 
-              items-center justify-center text-muted-foreground hover:bg-primary/5"
-            >
-              <FileVideo className="w-4 h-4" />
-              Selecionar um video
-            </Label>
-            <input type="file" id="video" accept="video/mp4" className="sr-only" />
-            <Separator />
-            <div className="space-y-2">
-              <label htmlFor="transcription_prompt">Prompt de transcrição</label>
-              <Textarea
-                id="transcription_prompt"
-                className="h-20 leading-relaxed resize-none"
-                placeholder="Inclua palavras-chaves mencionada no video separadas por virgula (,)"
-              />
-            </div>
-            <Button type="submit" className="w-full">
-              Carregar video
-              <Upload className="w-4 h-4 ml-2" />
-            </Button>
-          </form>
+          <VideoInputForm />
+
           <Separator />
           <form className="space-y-6">
-          <div className="space-y-2">
+            <div className="space-y-2">
               <Label>Prompt</Label>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecione um prompt..."/>
+                  <SelectValue placeholder="Selecione um prompt..." />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="title">Titulo do YouTube</SelectItem>
@@ -107,10 +86,10 @@ export function App() {
                 Valores mais altos tendem a deixar o resultado mais criativo com possiveis erros.
               </span>
             </div>
-            <Separator/>
+            <Separator />
             <Button type="submit" className="w-full">
               Executar
-              <Wand2 className="w-4 h-4 ml-2 "/>
+              <Wand2 className="w-4 h-4 ml-2 " />
             </Button>
           </form>
         </aside>
